@@ -7,6 +7,7 @@
 %----------------------------------------------------------------------------------------
 \usepackage[english, russian]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage{accsupp}
 \RequirePackage[sfdefault]{ClearSans}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{tikz}
@@ -70,16 +71,19 @@
 \newcommand{\cvdate}[1]{\renewcommand{\cvdate}{#1}}
 \newcommand{\cvmail}[1]{\renewcommand{\cvmail}{#1}}
 \newcommand{\cvnumberphone}[1]{\renewcommand{\cvnumberphone}{#1}}
-%\newcommand{\cvnumberfone}[1]{\renewcommand{\cvnumberfone}{#1}}
+%\newcommand{\cvnumberphonekaz}[1]{\renewcommand{\cvnumberphonekaz}{#1}}
 \newcommand{\cvaddress}[1]{\renewcommand{\cvaddress}{#1}}
 \newcommand{\cvsite}[1]{\renewcommand{\cvsite}{#1}}
 \newcommand{\aboutme}[1]{\renewcommand{\aboutme}{#1}}
 \newcommand{\profilepic}[1]{\renewcommand{\profilepic}{#1}}
 \newcommand{\cvname}[1]{\renewcommand{\cvname}{#1}}
 \newcommand{\cvjobtitle}[1]{\renewcommand{\cvjobtitle}{#1}}
+\newcommand{\telegram}[1]{\renewcommand{\telegram}{#1}}
 
 % Command for printing the contact information icons
 \newcommand*\icon[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=1pt, fill=mainblue,mainblue,text=white] (char) {#1};}}
+
+\NewDocumentCommand{\faAlt}{o m}{\BeginAccSupp{ActualText=\IfValueTF{#1}{#1}{#2}}\color{mainblue}\faIcon{#2}\EndAccSupp{}}
 
 % Command for printing skill progress bars
 \newcommand\skills[1]{ 
@@ -163,11 +167,12 @@
 		\renewcommand{\arraystretch}{1.6}
 		\begin{tabular}{p{0.5cm} @{\hskip 0.5cm}p{5cm}}
 			\ifthenelse{\equal{\cvdate}{}}{}{\textsc{\Large\icon{\Info}} & \cvdate\\}
-			\ifthenelse{\equal{\cvaddress}{}}{}{\textsc{\Large\icon{\Letter}} & \cvaddress\\}
+			\ifthenelse{\equal{\cvaddress}{}}{}{\textsc{\Large\icon{\Mundus}} & \cvaddress\\}
 			\ifthenelse{\equal{\cvnumberphone}{}}{}{\textsc{\Large\icon{\Telefon}} & \cvnumberphone\\}
-			%\ifthenelse{\equal{\cvnumberfone}{}}{}{\textsc{\Large\icon{\Telefon}} & \cvnumberfone\\}
-			\ifthenelse{\equal{\cvsite}{}}{}{\textsc{\Large\icon{\Mundus}} & \cvsite\\}
-			\ifthenelse{\equal{\cvmail}{}}{}{\textsc{\large\icon{@}} & \href{mailto:\cvmail}{\cvmail}}
+			\ifthenelse{\equal{\cvmail}{}}{}{\textsc{\large\icon{@}} & \href{mailto:\cvmail}{\cvmail}\\}
+			%\ifthenelse{\equal{\cvnumberphone}{}}{}{\textsc{\large\icon{\faTelegram }} & \telegram\\}
+			\ifthenelse{\equal{\cvsite}{}}{}{\textsc{\Large\faAlt{linkedin}} & \cvsite\\}
+			\ifthenelse{\equal{\cvsite}{}}{}{\textsc{\Large\faAlt{telegram}} & \telegram}
 		\end{tabular}
 
 		%------------------------------------------------
