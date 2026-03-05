@@ -273,12 +273,12 @@
 
 
 \newcommand{\twentyitem}[6]{%
-	#1&\parbox[t]{0.75\textwidth}{%
+	#1&\parbox[t]{0.82\textwidth}{%
 		\textbf{#3}% 
 		\hfill%
 		{\footnotesize#4}%
         }\\%
-    #2&\parbox[t]{0.75\textwidth}{%
+    #2&\parbox[t]{0.82\textwidth}{%
 		\ifblank{#5}{}{#5 \\}
 		#6%
 	}\\
