@@ -7,250 +7,176 @@
 % http://www.LaTeXTemplates.com
 %
 % Original author:
-% Carmine Spagnuolo (cspagnuolo@unisa.it) with major modifications by 
+% Carmine Spagnuolo (cspagnuolo@unisa.it) with major modifications by
 % Vel (vel@LaTeXTemplates.com)
 %
 % License:
 % The MIT License (see included LICENSE file)
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %----------------------------------------------------------------------------------------
-%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+% PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
-
 \documentclass[letterpaper]{twentysecondcv} % a4paper for A4
 \usepackage[english, russian]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
 \usepackage{fontawesome5}
 %----------------------------------------------------------------------------------------
-%	 PERSONAL INFORMATION
+% PERSONAL INFORMATION
 %----------------------------------------------------------------------------------------
-
 % If you don't need one or more of the below, just remove the content leaving the command, e.g. \cvnumberphone{}
-
 \profilepic{photo.jpeg} % Profile picture
-
-\cvname{Karimov Ainur} % Your name
-\cvjobtitle{Data Scientist} % Job title/career
-
-\cvdate{5 Nov 1989} % Date of birth
-\cvaddress{Kazan, Russia} % Short address/location, use \newline if more than 1 line is required
+\cvname{Каримов Айнур} % Ваше имя
+\cvjobtitle{Машинное обучение} % Должность/карьера
+\cvdate{5 ноя 1989} % Дата рождения
+\cvaddress{Казань, Россия} % Короткий адрес/локация, используйте \newline при необходимости
 \telegram{\href{https://t.me/ainureg}{Telegram} }
-\cvnumberphone{+7 9637654435, +7 7076805853} % Phone number
-\cvsite{ \href{https://www.linkedin.com/in/ainurkarimov}{LinkedIn} } % Personal website
-\cvmail{ainureg@ya.ru} % Email address
+\cvnumberphone{+7 9637654435, +7 7076805853} % Номер телефона
+\cvsite{ \href{https://www.linkedin.com/in/ainurkarimov}{LinkedIn} } % Персональный сайт
+\cvmail{ainureg@ya.ru} % Email
 \education{
-    \textbf{MSc, ФАКT} \\
-    MIPT (МФТИ) \\
-    2022 | Moscow\\
-
-    \textbf{BMath, Кафедра теории функции и приближения}  \\
-    КФУ Институт Механики и Математики \\
-    2014 | Kazan, Russia
+    \textbf{Магистр, ФАКТ} \\
+    МФТИ \\
+    2022 | Москва\\
+    \textbf{Бакалавр, теория функций и приближения} \\
+    КФУ Институт механики и математики \\
+    2014 | Казань, Россия
 }
 %----------------------------------------------------------------------------------------
-
 \begin{document}
-
 %----------------------------------------------------------------------------------------
-%	 ABOUT ME
+% ABOUT ME
 %----------------------------------------------------------------------------------------
-
 \aboutme{
-Experienced Computer Vision Engineer with a strong foundation in theory and practice, MIPT alumnus, advancing skills through MADE Big Data Academy. 6+ years in machine learning, focused on medical segmentation, geodata processing, and statistical analysis. Proficient in Python, PyTorch, OpenCV, CI/CD. Skilled in deploying models to production and delivering profitable solutions. Eager to keep learning and contribute meaningfully to the team.
-
+Опытный инженер компьютерного зрения с прочной теоретической и практической базой, выпускник МФТИ, повышал квалификацию в Академии больших данных MADE. Более 6 лет в машинном обучении, с акцентом на сегментацию медицинских данных, обработку геоданных и статистический анализ. Владею Python, PyTorch, OpenCV, CI/CD. Умею разворачивать модели в продакшен и предлагать коммерчески выгодные решения. Стремлюсь к постоянному обучению и значимому вкладу в команду.
 }
-% To have no About Me section, just remove all the text and leave \aboutme{}
-
 %----------------------------------------------------------------------------------------
-%	 SKILLS
+% SKILLS
 %----------------------------------------------------------------------------------------
-
 % Skill bar section, each skill must have a value between 0 an 6 (float)
-\skills{{Python * Linux *  computer vision/5.5},{SQL * R * C++ * MLOps / 4 }}
-
+\skills{{Python * Linux * computer vision/5.5},{SQL * R * C++ * MLOps / 4 }}
 %------------------------------------------------
-
 % Skill text section, each skill must have a value between 0 an 6
 \skillstext{{Russian/C2},{English/B2},{Tatar/B2},{Spanish/A1},{Turkish/B1}}
-
 %----------------------------------------------------------------------------------------
-% \skillstext{ {git * dvc * linux * bash * opencv * pytorch}}
-
-
 \makeprofile % Print the sidebar
-
-
 %----------------------------------------------------------------------------------------
-%	 EXPERIENCE
+% EXPERIENCE
 %----------------------------------------------------------------------------------------
-
-\section{Experience}
+\section{Опыт работы}
 
 \begin{twenty} % Environment for a list with descriptions
         \twentyitem
-        {Feb 2022 —}
-        {Now}
-        {Machine Learning Engineer}
-        {\href{https://innopolis.university/en/}{Innopolis University}}
+        {фев 2022 —}
+        {наст. вр.}
+        {Инженер машинного обучения}
+        {\href{https://innopolis.university/en/}{Университет Иннополис}}
         {}
         {
         {\begin{itemize}
-            \item tasks: semantic segmentation of medical data
-            \item skills: git, torch, python, tfs, DICOM
-            \item achievements:
+            \item задачи: семантическая сегментация медицинских данных
+            \item навыки: git, torch, python, tfs, DICOM
+            \item достижения:
             {\begin{itemize}
-                \item 2 patents (see folder below)
-                \item presented our model at {\href{https://inno-onco.ru/}{International Forum}}
-                \item oncoming scientific article
+                \item 2 патента (см. папку ниже)
+                \item модель представлена на {\href{https://inno-onco.ru/}{Международном форуме}}
+                \item готовится научная статья
             \end{itemize}
             }
         \end{itemize}}
         }
         \\
-
         \twentyitem
-        {Jul 2019 —}
-        {Feb 2022}
-        {Data scientist, comp. vision}
-        {  \href{https://avtodoria.ru/}{Avtodoria}}
+        {июл 2019 —}
+        {фев 2022}
+        {Data Scientist, компьютерное зрение}
+        { \href{https://avtodoria.ru/}{Автодория}}
         {}
         {
         {\begin{itemize}
-            \item tasks: segmentation, HD maps, image $\&$ geodata processing
-            \item skills: docker, pytest, opencv, torch, geopandas, gitlab
-            \item achievements:
+            \item задачи: сегментация, HD-карты, геоданные
+            \item навыки: docker, pytest, opencv, torch, geopandas, gitlab
+            \item достижения:
             {\begin{itemize}
-                \item deep learning model from scratch to prod
-                \item solutions were successfully commercialized
+                \item модели от разработки до продакшена
+                \item решения успешно коммерциализированы
             \end{itemize}
-            }            
+            }
         \end{itemize}}
         }
         \\
         \twentyitem
-        {Sep 2017 —}
-        {Oct 2018}
+        {сен 2017 —}
+        {окт 2018}
         {Data Scientist}
         {\href{http://maxima.life/}{Maxima}}
         {}
         {
         {\begin{itemize}
-            \item tasks: research, statistical analysis, checking the hypotheses
-            \item skills: python, r, pandas, sklearn, statsmodels, jupyter etc.
-            \item achievements:
+            \item задачи: исследования, статанализ, проверка гипотез
+            \item навыки: python, r, pandas, sklearn, statsmodels, jupyter и др.
+            \item достижения:
             {\begin{itemize}
-                \item automated bayesian analytics, statistically robust.
+                \item бот на байесовской статистике
+                \item бот для сбора данных на Selenium
             \end{itemize}
-            }            
+            }
         \end{itemize}}
         }
 \end{twenty}
-
 %----------------------------------------------------------------------------------------
-%	 OTHER INFORMATION
+% OTHER INFORMATION
 %----------------------------------------------------------------------------------------
+\section{Основные недавние события}
 
-\section{Main recent events}
-
-
-I was a student of \href{https://data.vk.company/}{"Big data academy MADE"} for 3 semesters. Some learned subjects:
+Я был студентом \href{https://data.vk.company/}{«Академии больших данных MADE»} в течение 3 семестров. Изученные дисциплины:
     {\begin{itemize}
-        \item \textbf{advanced python}: pytest, logger, rest services
-        \item \textbf{introduction to algorithms and data structures}
-        \item \textbf{geodata analysis}: typical problems, geopy, geopandas
-        \item \textbf{machine learning on graphs}: networkx, dgl
-        \item \textbf{machine learning in production}: dvc, mlflow, airflow, kubernetes, cicd
-        \item \emph{advanced ml}: based on the bayesian statistics etc
+        \item \textbf{продвинутый Python}: pytest, logger, REST-сервисы
+        \item \textbf{введение в алгоритмы и структуры данных}
+        \item \textbf{анализ геоданных}: типичные задачи, geopy, geopandas
+        \item \textbf{машинное обучение в продакшене}: dvc, mlflow, airflow, kubernetes, CI/CD
+        \item \emph{продвинутое ML}: на основе байесовской статистики и др.
+        \item \textbf{Разговорный ИИ и диалоговые системы}: боты для мессенджеров и умных колонок
     \end{itemize}
     }
 
 
 %----------------------------------------------------------------------------------------
-%	 INTERESTS
+% INTERESTS
 %----------------------------------------------------------------------------------------
-
-\section{Certificates}
+\section{Сертификаты}
     {\begin{itemize}
-        \item \href{https://yadi.sk/d/aSyzcZ44-_l-8w?w=1}{Yandex.disk} folder for certificates
-        \item I was a listener of HPC school by Intel (2014), Innopolis University (2014, 2015) with a certificate of advanced training),
-        Summer Bioinformatics School (2014)
-        \item Multiple diplomas of math contests of different levels: school, student, international:
+        \item \href{https://yadi.sk/d/aSyzcZ44-_l-8w?w=1}{Папка на Yandex.Disk} с сертификатами
+        \item Слушатель школы HPC от Intel (2014), Университета Иннополис (2014, 2015) с сертификатом повышения квалификации, Летней школы биоинформатики (2014)
+        \item Множество дипломов математических олимпиад разных уровней (школьные, студенческие, международные):
             {\begin{itemize}
-            \item 5 times the $1^{st}$ place in the city contest
-            \item the $4^{th}$ place in the state contest
-            \item a second-degree diploma at the ``Lobachevskii Mathematical Competition for University Studentsy''; top student of my department
-            \item the $1^{st}$ place in the math contest of ``International Space Olympics'' among students from Great Britain, Russia, Germany and Greece.
+            \item 5 раз 1-е место на городской олимпиаде
+            \item 4-е место на республиканском уровне
+            \item диплом II степени на «Математическом конкурсе имени Лобачевского для студентов университетов»; лучший студент факультета
+            \item 1-е место в математическом конкурсе «Международной космической олимпиады» среди студентов из Англии, России, Германии и Греции
             \end{itemize}}
-
     \end{itemize}}
+\section{Интересы и прочее}
 
-\section{Interests etc.}
+Наука, самообразование, языки (разговорные и языки программирования), когда-то писал \href{https://github.com/ainureg/2048}{бота для игры 2048}
 
-Science, mathematics, self-education, languages (speaking and programming)
+\section{Будущие цели}
 
-\subsection{Future aims}
-
-Reinforcement learning, SLAM, math statistics
-
-
+Обучение с подкреплением, SLAM, математическая статистика
 \end{document}
-
-
 %----------------------------------------------------------------------------------------
-%	 PUBLICATIONS
+% PUBLICATIONS (закомментировано)
 %----------------------------------------------------------------------------------------
-
 \iffalse
-\section{Publications}
-
-\begin{twentyshort} % Environment for a short list with no descriptions
-	\twentyitemshort{1865}{Chapter One, Down the Rabbit Hole.}
-	\twentyitemshort{1865}{Chapter Two, The Pool of Tears.}
-	\twentyitemshort{1865}{Chapter Three,  The Caucus Race and a Long Tale.}
-	\twentyitemshort{1865}{Chapter Four,  The Rabbit Sends a Little Bill.}
-	\twentyitemshort{1865}{Chapter Five,  Advice from a Caterpillar.}
-	%\twentyitemshort{<dates>}{<title/description>}
+\section{Публикации}
+\begin{twentyshort}
+\twentyitemshort{1865}{Глава первая, Вниз по кроличьей норе.}
+% и т.д.
 \end{twentyshort}
-
-
-%----------------------------------------------------------------------------------------
-%	 AWARDS
-%----------------------------------------------------------------------------------------
-
-\section{Awards}
-
-\begin{twentyshort} % Environment for a short list with no descriptions
-	\twentyitemshort{1987}{All-Time Best Fantasy Novel.}
-	\twentyitemshort{1998}{All-Time Best Fantasy Novel before 1990.}
-	%\twentyitemshort{<dates>}{<title/description>}
+\section{Награды}
+\begin{twentyshort}
+% ...
 \end{twentyshort}
 \fi
-
-%----------------------------------------------------------------------------------------
-%	 SECOND PAGE EXAMPLE
-%----------------------------------------------------------------------------------------
-
-%\newpage % Start a new page
-
-%\makeprofile % Print the sidebar
-
-%\section{Other information}
-
-%\subsection{Review}
-
-%Alice approaches Wonderland as an anthropologist, but maintains a strong sense of noblesse oblige that comes with her class status. She has confidence in her social position, education, and the Victorian virtue of good manners. Alice has a feeling of entitlement, particularly when comparing herself to Mabel, whom she declares has a ``poky little house," and no toys. Additionally, she flaunts her limited information base with anyone who will listen and becomes increasingly obsessed with the importance of good manners as she deals with the rude creatures of Wonderland. Alice maintains a superior attitude and behaves with solicitous indulgence toward those she believes are less privileged.
-
-%\section{Other information}
-
-%\subsection{Review}
-
-%Alice approaches Wonderland as an anthropologist, but maintains a strong sense of noblesse oblige that comes with her class status. She has confidence in her social position, education, and the Victorian virtue of good manners. Alice has a feeling of entitlement, particularly when comparing herself to Mabel, whom she declares has a ``poky little house," and no toys. Additionally, she flaunts her limited information base with anyone who will listen and becomes increasingly obsessed with the importance of good manners as she deals with the rude creatures of Wonderland. Alice maintains a superior attitude and behaves with solicitous indulgence toward those she believes are less privileged.
-
-%----------------------------------------------------------------------------------------
-
-
-
 
