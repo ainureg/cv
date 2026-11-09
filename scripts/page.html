@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="$lang">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>$title</title>
+  <meta name="description" content="$about">
+  <meta name="theme-color" content="#f5f3ee">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="$title">
+  <meta property="og:description" content="$intro">
+  <meta property="og:image" content="https://ainureg.github.io/cv/assets/portrait.jpeg">
+  <link rel="icon" href="${prefix}assets/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" hreflang="ru" href="https://ainureg.github.io/cv/">
+  <link rel="alternate" hreflang="en" href="https://ainureg.github.io/cv/en/">
+  <link rel="stylesheet" href="${prefix}styles.css">
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">$section ↓</a>
+  <header class="header wrap">
+    <a href="$prefix" class="wordmark" aria-label="$name">ak<span>.</span></a>
+    <nav aria-label="$section"><a href="#experience">$navExperience</a><a href="#about">$navAbout</a><a href="#contact">$navContact <span aria-hidden="true">↗︎</span></a></nav>
+    <div class="language">$languageLinks</div>
+  </header>
+  <main id="main" class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-main"><p class="eyebrow"><span class="dot"></span> $heroLabel</p>
+        <h1 id="hero-title">$name<span class="accent">.</span></h1>
+        <p class="intro">$intro</p>
+        <div class="hero-actions"><a class="button primary" href="mailto:ainureg@ya.ru">$contact <span aria-hidden="true">↗︎</span></a><a class="button secondary" href="${prefix}assets/ainur-karimov-cv.pdf" download>$download <span aria-hidden="true">↓</span></a></div>
+        <div class="hero-links"><a href="https://github.com/ainureg" target="_blank" rel="noopener noreferrer">GitHub ↗︎</a><a href="https://www.linkedin.com/in/ainurkarimov" target="_blank" rel="noopener noreferrer">LinkedIn ↗︎</a><a href="https://t.me/ainureg" target="_blank" rel="noopener noreferrer">Telegram ↗︎</a></div>
+      </div>
+      <figure class="portrait"><div class="portrait-image"><img src="${prefix}assets/portrait.jpeg" alt="$portrait" width="240" height="229" fetchpriority="high"></div><figcaption><span class="small-cross" aria-hidden="true">+</span><span>$location</span><span class="mono">55.79° N · 49.12° E</span></figcaption></figure>
+    </section>
+    <section class="about section-row" id="about"><div class="section-label"><span class="section-number">01 /</span><h2>$section</h2></div><div><p class="about-text">$about</p><div class="tags focus-tags">$focus</div></div></section>
+    <section class="experience" id="experience"><div class="section-heading"><div><span class="section-number">02 /</span><h2>$experience</h2></div><p>$experienceNote</p></div><div class="jobs">$experienceItems</div></section>
+    <section class="section-row skills"><div class="section-label"><span class="section-number">03 /</span><h2>$skills</h2></div><div>$skillItems</div></section>
+    <section class="section-row education"><div class="section-label"><span class="section-number">04 /</span><h2>$education</h2></div><div>$educationItems<a class="text-link" href="$certificatesUrl" target="_blank" rel="noopener noreferrer">$certificates ↗︎</a></div></section>
+    <section class="section-row research"><div class="section-label"><span class="section-number">05 /</span><h2>$research</h2></div><a class="research-card" href="$researchUrl" target="_blank" rel="noopener noreferrer"><div class="research-symbol" aria-hidden="true">[ + ]</div><div><p class="eyebrow">COMPUTER VISION · HEALTHCARE</p><h3>$researchTitle</h3><p>$researchText</p><span class="text-link">$article ↗︎</span></div></a></section>
+    <section class="personal"><div><h3>$languages</h3><p>$languageList</p></div><div><h3>$elsewhere</h3><p>$interests</p></div></section>
+    <section class="contact" id="contact"><div><p class="eyebrow">LET’S TALK</p><h2>$contactTitle</h2><p>$contactText</p></div><a class="contact-email" href="mailto:ainureg@ya.ru">ainureg@ya.ru <span aria-hidden="true">↗︎</span></a><div class="contact-socials"><a href="https://t.me/ainureg" target="_blank" rel="noopener noreferrer">Telegram ↗︎</a><a href="https://www.linkedin.com/in/ainurkarimov" target="_blank" rel="noopener noreferrer">LinkedIn ↗︎</a><a href="https://github.com/ainureg" target="_blank" rel="noopener noreferrer">GitHub ↗︎</a></div></section>
+  </main>
+  <footer class="footer wrap"><span>© $name</span><a href="https://github.com/ainureg/cv" target="_blank" rel="noopener noreferrer">$source ↗︎</a><a href="#top">$top</a></footer>
+</body>
+</html>

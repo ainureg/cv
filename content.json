@@ -1,0 +1,29 @@
+{
+  "name": {"ru": "Айнур Каримов", "en": "Ainur Karimov"},
+  "location": {"ru": "Казань, Россия", "en": "Kazan, Russia"},
+  "intro": {"ru": "Превращаю данные в модели, а модели — в работающие решения.", "en": "Turning data into models. And models into things that work."},
+  "about": {"ru": "Инженер машинного обучения с математическим образованием. Занимаюсь компьютерным зрением, медицинскими изображениями, геоданными и робототехникой. Прохожу весь путь от исследования и проверки гипотез до внедрения модели в production.", "en": "Machine learning engineer with a background in mathematics. I work with computer vision, medical imaging, geospatial data, and robotics — taking models from research and hypothesis testing to production."},
+  "focus": ["Computer vision", "Robotics", "Applied ML"],
+  "experience": [
+    {"company": "Digital · Таттелеком", "url": "https://tattelecom.digital/", "role": "Machine Learning Engineer", "period": {"ru": "Май 2025 — сейчас", "en": "May 2025 — present"}, "text": {"ru": "Машинное обучение и робототехника.", "en": "Machine learning and robotics."}, "tags": ["Robotics", "Machine learning"]},
+    {"company": "Avtodoria", "url": "https://avtodoria.ru/", "role": "Computer Vision / Data Scientist", "period": {"ru": "Фев 2025 — фев 2026 · Июл 2019 — фев 2022", "en": "Feb 2025 — Feb 2026 · Jul 2019 — Feb 2022"}, "text": {"ru": "Сегментация, HD-карты, обработка изображений и геоданных. Разработал deep learning модель с нуля и довёл до production; решения были коммерциализированы. В 2025–2026 — SLAM и мониторинг с Grafana.", "en": "Segmentation, HD maps, image and geospatial processing. Built a deep learning model from scratch and brought it to production; the solutions were commercialized. Returned in 2025–2026 to work on SLAM and monitoring with Grafana."}, "tags": ["PyTorch", "OpenCV", "GeoPandas", "Docker", "SLAM"]},
+    {"company": {"ru": "Университет Иннополис", "en": "Innopolis University"}, "url": "https://innopolis.university/en/", "role": "Machine Learning Engineer", "period": {"ru": "Фев 2022 — дек 2024", "en": "Feb 2022 — Dec 2024"}, "text": {"ru": "Семантическая сегментация медицинских изображений. Представлял модель на международном онкологическом форуме. Результаты работы — патенты и научная публикация.", "en": "Semantic segmentation of medical images. Presented our model at an international oncology forum. The work resulted in patents and a scientific publication."}, "tags": ["Medical imaging", "PyTorch", "DICOM", "Python"]},
+    {"company": "Maxima", "url": "http://maxima.life/", "role": "Data Scientist", "period": {"ru": "Сен 2017 — окт 2018", "en": "Sep 2017 — Oct 2018"}, "text": {"ru": "Исследования, статистический анализ и проверка гипотез. Автоматизировал байесовскую аналитику с устойчивыми статистическими оценками.", "en": "Research, statistical analysis, and hypothesis testing. Automated Bayesian analytics with statistically robust estimates."}, "tags": ["Python", "R", "pandas", "scikit-learn", "statsmodels"]}
+  ],
+  "skills": [
+    {"label": {"ru": "Модели и данные", "en": "Models & data"}, "items": ["PyTorch", "OpenCV", "scikit-learn", "pandas", "GeoPandas", "DICOM"]},
+    {"label": {"ru": "Инженерия", "en": "Engineering"}, "items": ["Python", "SQL", "R", "C++", "Linux", "Git", "Docker", "pytest", "CI/CD", "MLOps"]},
+    {"label": {"ru": "Сейчас интересно", "en": "Exploring next"}, "items": ["Reinforcement learning", "SLAM", "Vision-language models"]}
+  ],
+  "education": [
+    {"year": "2022", "school": {"ru": "МФТИ", "en": "MIPT"}, "text": {"ru": "Магистратура · ФАКТ", "en": "MSc · Phystech School of Aerospace Technology"}},
+    {"year": "2014", "school": {"ru": "Казанский федеральный университет", "en": "Kazan Federal University"}, "text": {"ru": "Бакалавриат · Институт математики и механики, кафедра теории функций и приближений", "en": "BMath · Institute of Mathematics and Mechanics, Theory of Functions and Approximations"}},
+    {"year": "MADE", "school": "Big Data Academy MADE", "text": {"ru": "Три семестра: алгоритмы, геоаналитика, графовые модели, MLOps и байесовское машинное обучение.", "en": "Three semesters covering algorithms, geospatial analysis, graph ML, MLOps, and Bayesian machine learning."}}
+  ],
+  "languages": {"ru": "Русский · C2 / English · B2 / Татарский · B2 / Türkçe · B1 / Español · A1", "en": "Russian · C2 / English · B2 / Tatar · B2 / Turkish · B1 / Spanish · A1"},
+  "research": {"ru": "Медицинская сегментация", "en": "Medical image segmentation"},
+  "researchText": {"ru": "Научная статья по результатам работы с медицинскими изображениями в Университете Иннополис.", "en": "A research publication from my work on medical imaging at Innopolis University."},
+  "researchUrl": "https://www.mdpi.com/2077-0383/15/9/3370",
+  "certificatesUrl": "https://yadi.sk/d/aSyzcZ44-_l-8w?w=1",
+  "interests": {"ru": "Вне работы — математика, наука, самообразование и изучение языков. Участвовал в математических олимпиадах, включая Международную космическую олимпиаду и олимпиаду Лобачевского.", "en": "Beyond work: mathematics, science, self-directed learning, and languages. Competed in mathematics contests, including the International Space Olympics and the Lobachevsky Mathematical Competition."}
+}
