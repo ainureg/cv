@@ -23,9 +23,9 @@ python -m http.server 8000 --directory site
 
 ## GitHub Pages
 
-Одноразовая настройка: **Settings → Pages → Build and deployment → Source → GitHub Actions**.
-После включения запустить **Actions → Publish resume → Run workflow**, если первый запуск был до включения Pages.
-Дальнейшие изменения в `main` публикуются автоматически.
+Публикация включена из ветки `gh-pages`, корень `/`. Workflow `Publish resume` собирает страницы из `main`, обновляет `gh-pages` и запрашивает сборку Pages через API.
+Дальнейшие изменения в `main` публикуются автоматически. Ручной запуск: **Actions → Publish resume → Run workflow**.
+Если настройки Pages сброшены: **Settings → Pages → Deploy from a branch → gh-pages → /(root)**.
 
 ## PDF
 

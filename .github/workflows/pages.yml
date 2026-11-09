@@ -11,33 +11,40 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
-  id-token: write
 
 concurrency:
   group: github-pages
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
       - name: Build Russian and English pages
         run: python scripts/build.py
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-      - name: Upload website
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: site
-      - name: Deploy
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Update published branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin gh-pages
+          publish_dir="$RUNNER_TEMP/resume-publish"
+          git worktree add --detach "$publish_dir" origin/gh-pages
+          git -C "$publish_dir" rm -r --ignore-unmatch .
+          cp -a site/. "$publish_dir/"
+          git -C "$publish_dir" add --all
+          if ! git -C "$publish_dir" diff --cached --quiet; then
+            git -C "$publish_dir" commit -m "Publish resume from $GITHUB_SHA"
+            git -C "$publish_dir" push origin HEAD:gh-pages
+          fi
+      - name: Request Pages build
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds" --silent
