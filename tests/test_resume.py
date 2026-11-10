@@ -38,7 +38,7 @@ class ResumeTests(unittest.TestCase):
         self.assertIn('Shared Company', html)
         self.assertIn('mailto:shared@example.com', html)
         pdf = build_resume(self.data, root=self.root)
-        self.assertIn(r'\documentclass[10pt,a4paper]{article}', (self.root / 'generated/ainur-karimov-cv.tex').read_text())
+        self.assertIn(r'\documentclass[10pt,a4paper]{article}', (self.root / 'resume/ainur-karimov-cv.tex').read_text())
         text = subprocess.run(['pdftotext', str(pdf), '-'], capture_output=True, text=True, check=True).stdout
         for value in ['Shared Name', 'Shared Company', 'shared@example.com', 'R&D', '50%', 'under_score', '$10', '#1', '{literal}', 'missingfile']:
             self.assertIn(value, text)
@@ -52,7 +52,7 @@ class ResumeTests(unittest.TestCase):
     def test_overflow_is_rejected_and_previous_download_is_preserved(self):
         destination = self.root / 'site/assets/ainur-karimov-cv.pdf'
         destination.parent.mkdir(parents=True)
-        previous = (ROOT / 'site/assets/ainur-karimov-cv.pdf').read_bytes()
+        previous = b'previous published PDF'
         destination.write_bytes(previous)
         self.data['experience'][0]['bullets']['en'] *= 120
         with self.assertRaisesRegex(ValueError, 'exactly one A4 page'):
@@ -62,20 +62,20 @@ class ResumeTests(unittest.TestCase):
     def test_bundle_manifest_rejects_changed_content_and_tampered_pdf(self):
         source = self.root / 'content.json'
         source.write_text(json.dumps(self.data))
-        website.build_all(source, self.root)
+        website.build_all(source, self.root / 'build')
         check_bundle(self.root)
         original = source.read_text()
         source.write_text(original + '\n')
         with self.assertRaisesRegex(ValueError, 'changed after the last build'):
             check_bundle(self.root)
         source.write_text(original)
-        with (self.root / 'site/assets/ainur-karimov-cv.pdf').open('ab') as file:
+        with (self.root / 'build/site/assets/ainur-karimov-cv.pdf').open('ab') as file:
             file.write(b'tampered')
         with self.assertRaisesRegex(ValueError, 'Generated file changed'):
             check_bundle(self.root)
 
     def test_html_failure_does_not_replace_previous_website_or_pdf(self):
-        destination = self.root / 'site'
+        destination = self.root / 'build/site'
         (destination / 'assets').mkdir(parents=True)
         (destination / 'index.html').write_text('previous website')
         (destination / 'assets/ainur-karimov-cv.pdf').write_bytes(b'previous PDF')
@@ -83,7 +83,7 @@ class ResumeTests(unittest.TestCase):
         source.write_text(json.dumps(self.data))
         with patch.object(website, 'build_site', side_effect=ValueError('invalid HTML template')):
             with self.assertRaisesRegex(ValueError, 'invalid HTML template'):
-                website.build_all(source, self.root)
+                website.build_all(source, self.root / 'build')
         self.assertEqual((destination / 'index.html').read_text(), 'previous website')
         self.assertEqual((destination / 'assets/ainur-karimov-cv.pdf').read_bytes(), b'previous PDF')
 

@@ -14,8 +14,8 @@ from urllib.parse import urljoin
 
 ROOT = Path(__file__).resolve().parents[1]
 
-def build_site(data, output_root=ROOT):
-    template = Template((ROOT / 'scripts/page.html').read_text())
+def build_site(data, output_root=ROOT / 'build'):
+    template = Template((ROOT / 'src/page.html').read_text())
 
     COPY = {
         'ru': dict(navExperience='Опыт', navAbout='Обо мне', navContact='Контакты', contact='Написать мне', download='Резюме PDF', experience='Опыт работы', experienceNote='От статистики к зрению и робототехнике.', skills='Инструменты и интересы', education='Образование', research='Исследования', article='Читать статью', certificates='Сертификаты и дипломы', languages='Языки', elsewhere='За пределами работы', contactTitle='Давайте на связи.', contactText='Обсудить ML, компьютерное зрение или робототехнику — напишите мне.', top='Наверх ↑', source='Исходный код', section='Обо мне'),
@@ -67,7 +67,7 @@ def build_site(data, output_root=ROOT):
             selectors.append(f'''<button type="button" role="tab" id="tab-{pid}" aria-controls="case-{pid}" aria-selected="{str(selected).lower()}" tabindex="{0 if selected else -1}" data-case="{pid}"><span class="case-number">0{index + 1}</span><span><strong>{e(project['title'])}</strong><small>{e(project['category'])}</small></span><span class="case-arrow" aria-hidden="true">↗︎</span></button>''')
             step_list = local(project['steps'])
             steps = ''.join(f'<li><span>0{i + 1}</span>{e(step)}</li>' for i, step in enumerate(step_list))
-            visual = (ROOT / 'scripts' / 'visuals' / f'{pid}.svg').read_text()
+            visual = (ROOT / 'src' / 'visuals' / f'{pid}.svg').read_text()
             view_control = f'<div class="view-control" role="group" aria-label="{e(COPY[lang]["workflow"])}"><button type="button" aria-pressed="true" data-view="camera">{e(COPY[lang]["cityView"])}</button><button type="button" aria-pressed="false" data-view="ground">{e(COPY[lang]["groundView"])}</button></div>' if pid == 'citysoft' else ''
             projection = f'<div class="projection-controls"><span>{e(COPY[lang]["projectionHint"])}</span><label>x <input type="range" min="0" max="100" value="45" data-axis="x" aria-label="x"></label><label>y <input type="range" min="0" max="100" value="55" data-axis="y" aria-label="y"></label><output class="projection-readout"></output></div>' if pid == 'citysoft' else ''
             panels.append(f'''<article class="case-panel" role="tabpanel" id="case-{pid}" aria-labelledby="tab-{pid}" tabindex="0"{'' if selected else ' hidden'}>
@@ -115,7 +115,7 @@ def build_site(data, output_root=ROOT):
         print(f'Built {destination.relative_to(output_root)}')
 
 
-def build_all(content_path=ROOT / 'content.json', output_root=ROOT):
+def build_all(content_path=ROOT / 'content.json', output_root=ROOT / 'build'):
     """Prepare a complete matching HTML/PDF bundle before replacing local outputs."""
     content_path, output_root = Path(content_path), Path(output_root)
     source = content_path.read_bytes()
@@ -123,7 +123,7 @@ def build_all(content_path=ROOT / 'content.json', output_root=ROOT):
     output_root.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='.cv-build-', dir=output_root) as directory:
         stage = Path(directory)
-        shutil.copytree(ROOT / 'site', stage / 'site')
+        shutil.copytree(ROOT / 'src', stage / 'site', ignore=shutil.ignore_patterns('page.html', 'resume.tex.template', 'visuals'))
         for company in data['companies'].values():
             if company.get('logo') and not (stage / 'site' / company['logo']).is_file():
                 raise ValueError(f'Missing company logo: {company["logo"]}')
@@ -142,8 +142,7 @@ def build_all(content_path=ROOT / 'content.json', output_root=ROOT):
         if content_path.read_bytes() != source:
             raise ValueError('content.json changed during the build. Run the build again; existing outputs were kept.')
         # Save the standalone source for inspection; it is never an input to the build.
-        (output_root / 'generated').mkdir(exist_ok=True)
-        shutil.copyfile(stage / 'generated/ainur-karimov-cv.tex', output_root / 'generated/ainur-karimov-cv.tex')
+        shutil.copytree(stage / 'resume', output_root / 'resume', dirs_exist_ok=True)
         previous = stage / 'previous-site'
         destination = output_root / 'site'
         if destination.exists():

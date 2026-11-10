@@ -1,5 +1,5 @@
 % Generated from content.json. Edit the JSON or this template.
-% Copy generated/ainur-karimov-cv.tex elsewhere for standalone manual editing.
+% Copy build/resume/ainur-karimov-cv.tex elsewhere for standalone manual editing.
 \documentclass[10pt,a4paper]{article}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}

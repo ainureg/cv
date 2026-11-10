@@ -7,7 +7,7 @@ on:
       - content.json
       - scripts/**
       - tests/**
-      - site/**
+      - src/**
       - .github/workflows/pages.yml
   workflow_dispatch:
 
@@ -47,7 +47,7 @@ jobs:
           publish_dir="$RUNNER_TEMP/resume-publish"
           git worktree add --detach "$publish_dir" origin/gh-pages
           git -C "$publish_dir" rm -r --ignore-unmatch .
-          cp -a site/. "$publish_dir/"
+          cp -a build/site/. "$publish_dir/"
           git -C "$publish_dir" add --all
           if ! git -C "$publish_dir" diff --cached --quiet; then
             git -C "$publish_dir" commit -m "Publish resume from $GITHUB_SHA"

@@ -77,7 +77,7 @@ def render_resume(data):
         publicationVenue=tex(data['publicationVenue']),
         publicationLink=link(data['researchUrl'], 'DOI: ' + data['researchUrl'].removeprefix('https://doi.org/')),
     )
-    return Template((ROOT / 'scripts/resume.tex.template').read_text()).substitute(values)
+    return Template((ROOT / 'src/resume.tex.template').read_text()).substitute(values)
 
 
 def validate_pdf(path, log):
@@ -96,15 +96,15 @@ def validate_pdf(path, log):
         raise ValueError('Resume has overflowing text or missing glyphs. Inspect build/resume/*.log; previous website PDF was kept.')
 
 
-def build_resume(data, root=ROOT):
+def build_resume(data, root=ROOT / 'build'):
     root = Path(root)
     for command in ['pdflatex', 'pdfinfo']:
         if not shutil.which(command):
             raise RuntimeError(f'{command} is required for PDF generation. See README.md for installation instructions.')
-    source = root / 'generated/ainur-karimov-cv.tex'
+    source = root / 'resume/ainur-karimov-cv.tex'
     source.parent.mkdir(parents=True, exist_ok=True)
     source.write_text(render_resume(data))
-    build = root / 'build/resume'
+    build = root / 'resume'
     build.mkdir(parents=True, exist_ok=True)
     for extension in ('aux', 'out', 'toc'):
         (build / f'ainur-karimov-cv.{extension}').unlink(missing_ok=True)
