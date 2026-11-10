@@ -30,14 +30,17 @@
     \vspace{3pt}
     {\large\color{black!80}\cvjobtitle\par}
     \vspace{8pt}
-    \cvaddress\par\vspace{5pt}
-    $sidebarContacts\par
+    \begin{tabular}{@{}p{0.45cm}p{5.55cm}@{}}
+    $contactRows
+    \end{tabular}\par
     \profilesection{Skills}\par\vspace{4pt}
     $skills
     \profilesection{Languages}\par\vspace{4pt}
     $languages\par
     \profilesection{Education}\par\vspace{4pt}
     $education
+    \profilesection{Training}\par\vspace{4pt}
+    $training
   \end{minipage}%
   \end{lrbox}%
   \ifdim\dimexpr\ht\profilebox+\dp\profilebox\relax>\dimexpr\paperheight-1cm\relax
@@ -67,4 +70,8 @@ $experience
 \vspace{4pt}
 $publicationVenue\par
 $publicationLink
+\par\vspace{7pt}
+\section{Certificates and awards}\par\vspace{6pt}
+$certificatesLink\par\vspace{4pt}
+\textbf{Mathematics:} $awards
 \end{document}

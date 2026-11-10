@@ -35,6 +35,13 @@ def link(url, label):
     return r'\href{' + escaped + '}{' + tex(label) + '}'
 
 
+def academic_text(data, key):
+    return '; '.join(
+        r'\textbf{' + tex(item['title']) + '}: ' + tex(item['text']).rstrip('.')
+        for item in data.get(key, [])
+    ) + '.'
+
+
 def render_resume(data):
     jobs = []
     for job in data['experience']:
@@ -50,6 +57,15 @@ def render_resume(data):
     contacts = [link('mailto:' + data['email'], data['email'])]
     contacts.append(link(data['website'], urlsplit(data['website']).netloc + urlsplit(data['website']).path.rstrip('/')))
     contacts.extend(link(contact['url'], contact['label']) for contact in data['contacts'])
+    sidebar_rows = [r'\textcolor{mainblue}{\faIcon{map-marker-alt}} & ' + tex(data['location']) + r'\\[4pt]']
+    sidebar_rows.extend([
+        r'\textcolor{mainblue}{\faIcon{envelope}} & ' + contacts[0] + r'\\[4pt]',
+        r'\textcolor{mainblue}{\faIcon{globe}} & ' + contacts[1] + r'\\[4pt]',
+    ])
+    icons = {'LinkedIn': 'linkedin', 'Telegram': 'telegram', 'GitHub': 'github'}
+    for contact in data['contacts']:
+        icon = icons.get(contact['label'], 'link')
+        sidebar_rows.append(r'\textcolor{mainblue}{\faIcon{' + icon + '}} & ' + link(contact['url'], contact['label']) + r'\\[4pt]')
     education = '\n'.join(
         r'\textbf{' + tex(item['school']) + r'}\\ ' + tex(item['text'])
         + (r'\\ ' + tex(item['year']) if re.fullmatch(r'\d{4}', item['year']) else '') + r'\par\vspace{5pt}' for item in data['education']
@@ -67,6 +83,9 @@ def render_resume(data):
         publicationTitle=tex(data['researchTitle']),
         publicationVenue=tex(data['publicationVenue']),
         sidebarContacts=r'\\[4pt]'.join(contacts),
+        contactRows='\n'.join(sidebar_rows),
+        training=academic_text(data, 'training'), awards=academic_text(data, 'mathematicsAwards'),
+        certificatesLink=link(data['certificatesUrl'], 'Certificates and diplomas · Yandex Disk'),
         publicationLink=link(data['researchUrl'], 'DOI: ' + data['researchUrl'].removeprefix('https://doi.org/')),
     )
     return Template((ROOT / 'scripts/resume.tex.template').read_text()).substitute(values)
