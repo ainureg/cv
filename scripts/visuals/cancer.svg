@@ -1,0 +1,9 @@
+<svg class="work-visual" viewBox="0 0 760 350" fill="none" aria-hidden="true">
+<defs><pattern id="tissue-pattern" width="65" height="57" patternUnits="userSpaceOnUse" patternTransform="rotate(12)"><path d="M8 12C24-7 54 3 55 23S35 50 15 43 0 24 8 12Z" fill="#a38b9e" fill-opacity=".34" stroke="#cca2bf" stroke-opacity=".55"/><ellipse cx="29" cy="22" rx="9" ry="6" fill="#493b54"/></pattern></defs>
+<rect x="54" y="27" width="396" height="284" rx="3" fill="#695767"/><rect x="54" y="27" width="396" height="284" fill="url(#tissue-pattern)"/>
+<path d="m155 76 78-12 62 42 29 77-19 68-95 18-83-42 8-86Z" fill="#d7ef7a" fill-opacity=".18" stroke="#d7ef7a" stroke-width="2"/><path d="M125 70h210v210H125Z" stroke="#ede6da" stroke-opacity=".75" stroke-dasharray="5 6"/>
+<path d="M335 70 505 72M335 280 505 275" stroke="#d4c1d1" stroke-opacity=".6" stroke-dasharray="4 6"/>
+<rect x="505" y="72" width="205" height="205" fill="#302c38" stroke="#b5a0b6"/><path d="m540 118 52-17 58 28 27 62-29 53-62 9-50-35-9-49Z" fill="#d7ef7a" fill-opacity=".35" stroke="#d7ef7a" stroke-width="2"/>
+<path d="M65 38h22M65 38v22M439 38h-22M439 38v22M65 300h22M65 300v-22M439 300h-22M439 300v-22" stroke="#ede6da"/>
+<circle cx="607" cy="176" r="4" fill="#e5f9a0"/><path d="M595 176h24m-12-12v24" stroke="#e5f9a0"/><text x="512" y="302" fill="#e5d9e6" font-size="12" font-family="monospace">f(x) → mask</text>
+</svg>

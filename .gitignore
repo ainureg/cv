@@ -274,3 +274,12 @@ TSWLatexianTemp*
 
 # Makeindex log files
 *.lpz
+
+# Local PDF build products and Python bytecode
+/build/
+__pycache__/
+*.pyc
+
+# Exported copies; originals remain at the repository root
+/generated/twentysecondcv.cls
+/generated/photo.jpeg

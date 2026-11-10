@@ -1,29 +1,545 @@
 {
-  "name": {"ru": "Айнур Каримов", "en": "Ainur Karimov"},
-  "location": {"ru": "Казань, Россия", "en": "Kazan, Russia"},
-  "intro": {"ru": "Превращаю данные в модели, а модели — в работающие решения.", "en": "Turning data into models. And models into things that work."},
-  "about": {"ru": "Инженер машинного обучения с математическим образованием. Занимаюсь компьютерным зрением, медицинскими изображениями, геоданными и робототехникой. Прохожу весь путь от исследования и проверки гипотез до внедрения модели в production.", "en": "Machine learning engineer with a background in mathematics. I work with computer vision, medical imaging, geospatial data, and robotics — taking models from research and hypothesis testing to production."},
-  "focus": ["Computer vision", "Robotics", "Applied ML"],
+  "name": {
+    "ru": "Айнур Каримов",
+    "en": "Ainur Karimov"
+  },
+  "location": {
+    "ru": "Казань, Россия",
+    "en": "Kazan, Russia"
+  },
+  "intro": {
+    "ru": "Компьютерное зрение, медицинские изображения и робототехника.",
+    "en": "Computer vision, medical imaging, and robotics."
+  },
+  "about": {
+    "ru": "Инженер машинного обучения с математическим образованием. Занимаюсь компьютерным зрением, медицинскими изображениями, геоданными и робототехникой. Прохожу весь путь от исследования и проверки гипотез до внедрения модели в production.",
+    "en": "Machine learning engineer with a background in mathematics. I work with computer vision, medical imaging, geospatial data, and robotics — taking models from research and hypothesis testing to production."
+  },
+  "focus": [
+    "Computer vision",
+    "Robotics",
+    "Applied ML"
+  ],
   "experience": [
-    {"company": "Digital · Таттелеком", "url": "https://tattelecom.digital/", "role": "Machine Learning Engineer", "period": {"ru": "Май 2025 — сейчас", "en": "May 2025 — present"}, "text": {"ru": "Машинное обучение и робототехника.", "en": "Machine learning and robotics."}, "tags": ["Robotics", "Machine learning"]},
-    {"company": "Avtodoria", "url": "https://avtodoria.ru/", "role": "Computer Vision / Data Scientist", "period": {"ru": "Фев 2025 — фев 2026 · Июл 2019 — фев 2022", "en": "Feb 2025 — Feb 2026 · Jul 2019 — Feb 2022"}, "text": {"ru": "Сегментация, HD-карты, обработка изображений и геоданных. Разработал deep learning модель с нуля и довёл до production; решения были коммерциализированы. В 2025–2026 — SLAM и мониторинг с Grafana.", "en": "Segmentation, HD maps, image and geospatial processing. Built a deep learning model from scratch and brought it to production; the solutions were commercialized. Returned in 2025–2026 to work on SLAM and monitoring with Grafana."}, "tags": ["PyTorch", "OpenCV", "GeoPandas", "Docker", "SLAM"]},
-    {"company": {"ru": "Университет Иннополис", "en": "Innopolis University"}, "url": "https://innopolis.university/en/", "role": "Machine Learning Engineer", "period": {"ru": "Фев 2022 — дек 2024", "en": "Feb 2022 — Dec 2024"}, "text": {"ru": "Семантическая сегментация медицинских изображений. Представлял модель на международном онкологическом форуме. Результаты работы — патенты и научная публикация.", "en": "Semantic segmentation of medical images. Presented our model at an international oncology forum. The work resulted in patents and a scientific publication."}, "tags": ["Medical imaging", "PyTorch", "DICOM", "Python"]},
-    {"company": "Maxima", "url": "http://maxima.life/", "role": "Data Scientist", "period": {"ru": "Сен 2017 — окт 2018", "en": "Sep 2017 — Oct 2018"}, "text": {"ru": "Исследования, статистический анализ и проверка гипотез. Автоматизировал байесовскую аналитику с устойчивыми статистическими оценками.", "en": "Research, statistical analysis, and hypothesis testing. Automated Bayesian analytics with statistically robust estimates."}, "tags": ["Python", "R", "pandas", "scikit-learn", "statsmodels"]}
+    {
+      "company": {
+        "ru": "ТТК Digital",
+        "en": "TTK Digital"
+      },
+      "url": "https://tattelecom.digital/",
+      "role": "Machine Learning Engineer",
+      "period": {
+        "ru": "Май 2025 — сейчас",
+        "en": "May 2025 — present"
+      },
+      "tags": [
+        "Robotics",
+        "Machine learning"
+      ],
+      "bullets": {
+        "en": [
+          "Work on machine learning and robotics."
+        ],
+        "ru": [
+          "Работаю над задачами машинного обучения и робототехники."
+        ]
+      }
+    },
+    {
+      "company": "Avtodoria",
+      "url": "https://avtodoria.ru/",
+      "role": "Computer Vision / Data Scientist",
+      "period": {
+        "ru": "Фев 2025 — фев 2026",
+        "en": "Feb 2025 — Feb 2026"
+      },
+      "tags": [
+        "SLAM",
+        "Grafana"
+      ],
+      "bullets": {
+        "en": [
+          "Worked on SLAM and monitoring with Grafana."
+        ],
+        "ru": [
+          "Занимался задачами SLAM и мониторингом с Grafana."
+        ]
+      }
+    },
+    {
+      "company": {
+        "ru": "Университет Иннополис",
+        "en": "Innopolis University"
+      },
+      "url": "https://innopolis.university/en/",
+      "role": "Machine Learning Engineer",
+      "period": {
+        "ru": "Фев 2022 — дек 2024",
+        "en": "Feb 2022 — Dec 2024"
+      },
+      "tags": [
+        "Cancer recognition",
+        "Medical segmentation",
+        "PyTorch",
+        "DICOM"
+      ],
+      "bullets": {
+        "en": [
+          "Worked on cancer recognition and semantic segmentation of medical images using PyTorch and DICOM.",
+          "Contributed to selected AI Radiology modeling tasks."
+        ],
+        "ru": [
+          "Занимался распознаванием рака и семантической сегментацией медицинских изображений с PyTorch и DICOM.",
+          "Участвовал в отдельных задачах по моделям AI Radiology."
+        ]
+      },
+      "presentationIds": [
+        "inno-onco-2024"
+      ]
+    },
+    {
+      "company": "Avtodoria",
+      "url": "https://avtodoria.ru/",
+      "role": "Computer Vision / Data Scientist",
+      "period": {
+        "ru": "Июл 2019 — фев 2022",
+        "en": "Jul 2019 — Feb 2022"
+      },
+      "tags": [
+        "CitySoft",
+        "Segmentation",
+        "Geometry",
+        "PyTorch",
+        "OpenCV",
+        "GeoPandas"
+      ],
+      "bullets": {
+        "en": [
+          "Developed segmentation models for CitySoft and worked on geometric measurements and projections.",
+          "Processed images and geospatial data; helped bring deep learning solutions to production."
+        ],
+        "ru": [
+          "Разрабатывал модели сегментации для CitySoft, решал задачи геометрических измерений и проекций.",
+          "Обрабатывал изображения и геоданные; участвовал в доведении deep learning решений до production."
+        ]
+      }
+    },
+    {
+      "company": "Maxima",
+      "url": "http://maxima.life/",
+      "role": "Data Scientist",
+      "period": {
+        "ru": "Сен 2017 — окт 2018",
+        "en": "Sep 2017 — Oct 2018"
+      },
+      "tags": [
+        "Python",
+        "R",
+        "pandas",
+        "scikit-learn",
+        "statsmodels"
+      ],
+      "bullets": {
+        "en": [
+          "Conducted statistical research and hypothesis testing; automated Bayesian analytics."
+        ],
+        "ru": [
+          "Проводил статистические исследования и проверку гипотез; автоматизировал байесовскую аналитику."
+        ]
+      }
+    }
   ],
   "skills": [
-    {"label": {"ru": "Модели и данные", "en": "Models & data"}, "items": ["PyTorch", "OpenCV", "scikit-learn", "pandas", "GeoPandas", "DICOM"]},
-    {"label": {"ru": "Инженерия", "en": "Engineering"}, "items": ["Python", "SQL", "R", "C++", "Linux", "Git", "Docker", "pytest", "CI/CD", "MLOps"]},
-    {"label": {"ru": "Сейчас интересно", "en": "Exploring next"}, "items": ["Reinforcement learning", "SLAM", "Vision-language models"]}
+    {
+      "label": {
+        "ru": "Модели и данные",
+        "en": "Models & data"
+      },
+      "items": [
+        "PyTorch",
+        "OpenCV",
+        "scikit-learn",
+        "pandas",
+        "GeoPandas",
+        "DICOM"
+      ],
+      "id": "models"
+    },
+    {
+      "label": {
+        "ru": "Инженерия",
+        "en": "Engineering"
+      },
+      "items": [
+        "Python",
+        "SQL",
+        "R",
+        "C++",
+        "Linux",
+        "Git",
+        "Docker",
+        "pytest",
+        "CI/CD",
+        "MLOps"
+      ],
+      "id": "engineering"
+    },
+    {
+      "label": {
+        "ru": "Сейчас интересно",
+        "en": "Exploring next"
+      },
+      "items": [
+        "Reinforcement learning",
+        "SLAM",
+        "Vision-language models"
+      ],
+      "id": "interests"
+    }
   ],
   "education": [
-    {"year": "2022", "school": {"ru": "МФТИ", "en": "MIPT"}, "text": {"ru": "Магистратура · ФАКТ", "en": "MSc · Phystech School of Aerospace Technology"}},
-    {"year": "2014", "school": {"ru": "Казанский федеральный университет", "en": "Kazan Federal University"}, "text": {"ru": "Бакалавриат · Институт математики и механики, кафедра теории функций и приближений", "en": "BMath · Institute of Mathematics and Mechanics, Theory of Functions and Approximations"}},
-    {"year": "MADE", "school": "Big Data Academy MADE", "text": {"ru": "Три семестра: алгоритмы, геоаналитика, графовые модели, MLOps и байесовское машинное обучение.", "en": "Three semesters covering algorithms, geospatial analysis, graph ML, MLOps, and Bayesian machine learning."}}
+    {
+      "year": "2022",
+      "school": {
+        "ru": "МФТИ",
+        "en": "MIPT"
+      },
+      "text": {
+        "ru": "Магистратура · ФАКТ",
+        "en": "MSc · Phystech School of Aerospace Technology"
+      }
+    },
+    {
+      "year": "2014",
+      "school": {
+        "ru": "Казанский федеральный университет",
+        "en": "Kazan Federal University"
+      },
+      "text": {
+        "ru": "Бакалавриат · Институт математики и механики, кафедра теории функций и приближений",
+        "en": "BMath · Institute of Mathematics and Mechanics, Theory of Functions and Approximations"
+      }
+    },
+    {
+      "year": "MADE",
+      "school": "Big Data Academy MADE",
+      "text": {
+        "ru": "Три семестра: алгоритмы, геоаналитика, графовые модели, MLOps и байесовское машинное обучение.",
+        "en": "Three semesters covering algorithms, geospatial analysis, graph ML, MLOps, and Bayesian machine learning."
+      }
+    }
   ],
-  "languages": {"ru": "Русский · C2 / English · B2 / Татарский · B2 / Türkçe · B1 / Español · A1", "en": "Russian · C2 / English · B2 / Tatar · B2 / Turkish · B1 / Spanish · A1"},
-  "research": {"ru": "Медицинская сегментация", "en": "Medical image segmentation"},
-  "researchText": {"ru": "Научная статья по результатам работы с медицинскими изображениями в Университете Иннополис.", "en": "A research publication from my work on medical imaging at Innopolis University."},
-  "researchUrl": "https://www.mdpi.com/2077-0383/15/9/3370",
+  "training": [
+    {
+      "title": {
+        "ru": "Школа высокопроизводительных вычислений Intel",
+        "en": "Intel HPC School"
+      },
+      "text": {
+        "ru": "2014 · Участник школы по высокопроизводительным вычислениям.",
+        "en": "2014 · Participant in a high-performance computing school."
+      }
+    },
+    {
+      "title": {
+        "ru": "Школы Университета Иннополис",
+        "en": "Innopolis University schools"
+      },
+      "text": {
+        "ru": "2014, 2015 · Дополнительное обучение с получением свидетельства о повышении квалификации.",
+        "en": "2014, 2015 · Additional training with a professional development certificate."
+      }
+    },
+    {
+      "title": {
+        "ru": "Летняя школа биоинформатики",
+        "en": "Summer Bioinformatics School"
+      },
+      "text": {
+        "ru": "2014 · Участник летней школы.",
+        "en": "2014 · Summer school participant."
+      }
+    },
+    {
+      "title": {
+        "ru": "Школа по моделированию · POSTGENOME",
+        "en": "School on Modelling · POSTGENOME"
+      },
+      "text": {
+        "ru": "2–4 ноября 2014 · Казань. Диплом участника.",
+        "en": "2–4 November 2014 · Kazan. Participation diploma."
+      }
+    }
+  ],
+  "mathematicsAwards": [
+    {
+      "title": {
+        "ru": "Международная космическая олимпиада",
+        "en": "International Space Olympics"
+      },
+      "text": {
+        "ru": "1-е место в математическом конкурсе среди участников из Великобритании, России, Германии и Греции.",
+        "en": "First place in the mathematics competition, with participants from the UK, Russia, Germany, and Greece."
+      }
+    },
+    {
+      "title": {
+        "ru": "Студенческая математическая олимпиада имени Лобачевского",
+        "en": "Lobachevsky student mathematics competition"
+      },
+      "text": {
+        "ru": "Призёр олимпиады. Результат участия в 2013 году опубликован КФУ.",
+        "en": "Prize winner. The 2013 result was published by Kazan Federal University."
+      },
+      "url": "https://kpfu.ru/ob-otkrytoj-povolzhskoj-matematicheskoj-olimpiade.html"
+    },
+    {
+      "title": {
+        "ru": "Городские математические олимпиады",
+        "en": "City-level mathematics competitions"
+      },
+      "text": {
+        "ru": "Пятикратный победитель.",
+        "en": "Five-time first-place winner."
+      }
+    },
+    {
+      "title": {
+        "ru": "Региональная математическая олимпиада",
+        "en": "Regional mathematics competition"
+      },
+      "text": {
+        "ru": "4-е место.",
+        "en": "Fourth place."
+      }
+    }
+  ],
+  "languages": {
+    "ru": "Русский · C2 / English · B2 / Татарский · B2 / Türkçe · B1 / Español · A1",
+    "en": "Russian · C2 / English · B2 / Tatar · B2 / Turkish · B1 / Spanish · A1"
+  },
+  "research": {
+    "ru": "Публикация",
+    "en": "Publication"
+  },
+  "researchText": {
+    "en": "Co-author. Algorithm development and validation for tumor tissue detection in digitized gastric histology slides.",
+    "ru": "Соавтор. Разработка и проверка алгоритма распознавания опухолевой ткани на оцифрованных гистологических препаратах желудка."
+  },
+  "researchUrl": "https://doi.org/10.3390/jcm15093370",
   "certificatesUrl": "https://yadi.sk/d/aSyzcZ44-_l-8w?w=1",
-  "interests": {"ru": "Вне работы — математика, наука, самообразование и изучение языков. Участвовал в математических олимпиадах, включая Международную космическую олимпиаду и олимпиаду Лобачевского.", "en": "Beyond work: mathematics, science, self-directed learning, and languages. Competed in mathematics contests, including the International Space Olympics and the Lobachevsky Mathematical Competition."}
+  "interests": {
+    "ru": "Математика, наука, самообразование и изучение языков.",
+    "en": "Mathematics, science, self-directed learning, and languages."
+  },
+  "projects": [
+    {
+      "id": "citysoft",
+      "category": "COMPUTER VISION · GEOMETRY",
+      "title": "CitySoft",
+      "context": {
+        "ru": "Автодория · 2019–2022",
+        "en": "Avtodoria · 2019–2022"
+      },
+      "text": {
+        "ru": "Разрабатывал модели сегментации и решал задачи измерений и проекций. CitySoft использует компьютерное зрение для мониторинга городской инфраструктуры.",
+        "en": "Developed segmentation models and worked on measurements and projections. CitySoft uses computer vision to monitor urban infrastructure."
+      },
+      "tags": [
+        "Segmentation",
+        "Measurements",
+        "Projections"
+      ],
+      "links": [
+        {
+          "label": {
+            "ru": "Сайт продукта",
+            "en": "Product website"
+          },
+          "url": "https://city-soft.ru/"
+        }
+      ],
+      "subtitle": {
+        "en": "Teaching machines to read the city.",
+        "ru": "Машинное зрение для городской среды."
+      },
+      "contribution": {
+        "en": "Developed segmentation models; worked on measurements and projections, image processing, and geospatial data.",
+        "ru": "Разрабатывал модели сегментации; работал с измерениями и проекциями, обработкой изображений и геоданных."
+      },
+      "contextText": {
+        "en": "Computer vision for monitoring urban infrastructure. The product analyzes street imagery and maps infrastructure incidents.",
+        "ru": "Компьютерное зрение для мониторинга городской инфраструктуры. Продукт анализирует изображения улиц и отмечает инфраструктурные инциденты."
+      },
+      "steps": {
+        "en": [
+          "Street imagery",
+          "Segmentation",
+          "Measurements & projections"
+        ],
+        "ru": [
+          "Изображения улиц",
+          "Сегментация",
+          "Измерения и проекции"
+        ]
+      }
+    },
+    {
+      "id": "cancer",
+      "category": "COMPUTATIONAL PATHOLOGY",
+      "title": {
+        "ru": "Распознавание рака",
+        "en": "Cancer recognition"
+      },
+      "context": {
+        "ru": "Университет Иннополис · 2022–2024",
+        "en": "Innopolis University · 2022–2024"
+      },
+      "text": {
+        "ru": "Распознавание опухолевой ткани на медицинских изображениях и семантическая сегментация. Соавтор научной статьи о выявлении рака желудка.",
+        "en": "Tumor tissue recognition in medical images and semantic segmentation. Co-author of a research paper on gastric cancer detection."
+      },
+      "tags": [
+        "Medical imaging",
+        "Segmentation",
+        "PyTorch"
+      ],
+      "links": [
+        {
+          "label": {
+            "ru": "Статья · 2026",
+            "en": "Paper · 2026"
+          },
+          "url": "https://doi.org/10.3390/jcm15093370"
+        },
+        {
+          "label": {
+            "ru": "О проекте в КП · 2024",
+            "en": "Project coverage · 2024"
+          },
+          "url": "https://www.kazan.kp.ru/online/news/5959878/"
+        }
+      ],
+      "subtitle": {
+        "en": "Finding tumor tissue in medical images.",
+        "ru": "Поиск опухолевой ткани на медицинских изображениях."
+      },
+      "contribution": {
+        "en": "Worked on cancer recognition and semantic segmentation of medical images. Co-authored the study on gastric tumor tissue detection.",
+        "ru": "Занимался распознаванием рака и семантической сегментацией медицинских изображений. Соавтор исследования по выявлению опухолевой ткани желудка."
+      },
+      "contextText": {
+        "en": "A research collaboration on recognizing tumor tissue in digitized gastric histology. Published in Journal of Clinical Medicine in 2026.",
+        "ru": "Исследование распознавания опухолевой ткани на оцифрованных гистологических препаратах желудка. Опубликовано в Journal of Clinical Medicine в 2026 году."
+      },
+      "steps": {
+        "en": [
+          "Digitized histology",
+          "Tissue segmentation",
+          "Tumor regions"
+        ],
+        "ru": [
+          "Цифровая гистология",
+          "Сегментация ткани",
+          "Области опухоли"
+        ]
+      },
+      "presentationIds": [
+        "inno-onco-2024"
+      ]
+    },
+    {
+      "id": "radiology",
+      "category": "MEDICAL IMAGING",
+      "title": "AI Radiology",
+      "context": {
+        "ru": "Университет Иннополис · 2022–2024",
+        "en": "Innopolis University · 2022–2024"
+      },
+      "text": {
+        "ru": "Участвовал в отдельных задачах по моделям. AI Radiology — сервис анализа медицинских изображений для поддержки врачебных решений.",
+        "en": "Contributed to selected modeling tasks. AI Radiology is a medical image analysis service supporting clinical decision-making."
+      },
+      "tags": [
+        "Medical imaging",
+        "Model development"
+      ],
+      "links": [
+        {
+          "label": {
+            "ru": "Сайт продукта",
+            "en": "Product website"
+          },
+          "url": "https://en.innoit.ru/ai-radiology"
+        }
+      ],
+      "subtitle": {
+        "en": "Medical images. More useful information.",
+        "ru": "Медицинские изображения и поддержка диагностики."
+      },
+      "contribution": {
+        "en": "Contributed to selected modeling tasks within the AI Radiology team.",
+        "ru": "Участвовал в отдельных задачах по моделям в команде AI Radiology."
+      },
+      "contextText": {
+        "en": "A medical image analysis service that helps clinicians identify and localize pathologies.",
+        "ru": "Сервис анализа медицинских изображений для поддержки врачей в выявлении и локализации патологий."
+      },
+      "steps": {
+        "en": [
+          "Medical images",
+          "Model inference",
+          "Localized findings"
+        ],
+        "ru": [
+          "Медицинские изображения",
+          "Работа модели",
+          "Локализация изменений"
+        ]
+      }
+    }
+  ],
+  "researchTitle": "Artificial Intelligence for Tumor Tissue Detection in Stomach Cancer: A Retrospective Algorithm Development and Validation Study",
+  "orcid": "https://orcid.org/0009-0000-4770-2534",
+  "role": "Machine Learning Engineer",
+  "email": "ainureg@ya.ru",
+  "website": "https://ainureg.github.io/cv/",
+  "contacts": [
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/ainurkarimov"
+    },
+    {
+      "label": "Telegram",
+      "url": "https://t.me/ainureg"
+    },
+    {
+      "label": "GitHub",
+      "url": "https://github.com/ainureg"
+    }
+  ],
+  "publicationVenue": {
+    "en": "Journal of Clinical Medicine · 28 April 2026",
+    "ru": "Journal of Clinical Medicine · 28 апреля 2026"
+  },
+  "presentations": [
+    {
+      "id": "inno-onco-2024",
+      "event": "Inno Onco",
+      "year": 2024,
+      "location": {
+        "en": "Moscow",
+        "ru": "Москва"
+      },
+      "statement": {
+        "en": "Presented the team’s cancer recognition model at Inno Onco 2024, Moscow.",
+        "ru": "Представлял командную модель распознавания рака на Inno Onco 2024 в Москве."
+      },
+      "title": {
+        "en": "Nonlinear ensembling of neural networks for medical analysis of gastric histology images",
+        "ru": "Использование нелинейного ансамблирования нейронных сетей для медицинского анализа гистологических снимков желудка"
+      },
+      "url": "https://inno-onco.ru/web/upload/files/forum_programm_2024.pdf#page=5"
+    }
+  ]
 }

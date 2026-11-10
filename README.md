@@ -1,16 +1,16 @@
 # Айнур Каримов · CV
 
-Персональная страница: **https://ainureg.github.io/cv/** · [English](https://ainureg.github.io/cv/en/)
+Персональная страница: **https://ainureg.github.io/cv/** · [Русская версия](https://ainureg.github.io/cv/ru/)
 
-Адаптивный статический сайт на русском и английском, без JavaScript и внешних сервисов. Шрифты, фотография и PDF хранятся в репозитории.
+Адаптивный статический сайт на русском и английском, с небольшим JavaScript для переключения кейсов, схемы проекций, копирования email и печати, без внешних сервисов. Шрифты, фотография и PDF хранятся в репозитории.
 
 ## Как обновлять
 
 1. Отредактировать `content.json`: опыт, навыки, образование, ссылки и тексты на двух языках.
-2. Выполнить `python scripts/build.py` (Python 3.13+, без зависимостей).
+2. Выполнить `python scripts/build.py`: команда пересобирает одностраничный английский PDF и обе языковые версии сайта. Python 3.13+, без Python-зависимостей; для PDF нужны TeX Live и Poppler, установка ниже.
 3. Закоммитить изменения и отправить в `main`. GitHub Actions пересоберёт и опубликует сайт.
 
-Для новых разделов: HTML-шаблон — `scripts/page.html`, генератор — `scripts/build.py`, стили — `site/styles.css`. Готовые страницы находятся в `site/`; их не нужно редактировать вручную. Можно добавлять изображения, проекты и отдельные страницы в эту папку.
+Для новых разделов: HTML-шаблон — `scripts/page.html`, генератор — `scripts/build.py`, стили — `site/styles.css`, поведение — `site/app.js`, SVG-схемы — `scripts/visuals/`. Готовые страницы находятся в `site/`; их не нужно редактировать вручную. Можно добавлять изображения, проекты и отдельные страницы в эту папку.
 
 ## Локальный просмотр
 
@@ -19,7 +19,8 @@ python scripts/build.py
 python -m http.server 8000 --directory site
 ```
 
-Открыть http://localhost:8000/ или http://localhost:8000/en/.
+Открыть http://localhost:8000/ (English) или http://localhost:8000/ru/.
+Английская версия открывается по умолчанию. Старый адрес `/en/` сохранён.
 
 ## GitHub Pages
 
@@ -27,16 +28,56 @@ python -m http.server 8000 --directory site
 Дальнейшие изменения в `main` публикуются автоматически. Ручной запуск: **Actions → Publish resume → Run workflow**.
 Если настройки Pages сброшены: **Settings → Pages → Deploy from a branch → gh-pages → /(root)**.
 
-## PDF
+## Общий источник сайта и PDF
 
-Исходник: `cv_karimov_ainur.tex`, шаблон: `twentysecondcv.cls`. На сайте опубликован PDF, пересобранный из этого исходника. PDF обновляется отдельно от веб-страницы:
+`content.json` — единственное место для редактирования данных:
 
-```bash
-mkdir -p /tmp/cv-build
-pdflatex -interaction=nonstopmode -halt-on-error -output-directory=/tmp/cv-build cv_karimov_ainur.tex
-pdflatex -interaction=nonstopmode -halt-on-error -output-directory=/tmp/cv-build cv_karimov_ainur.tex
-cp /tmp/cv-build/cv_karimov_ainur.pdf site/assets/ainur-karimov-cv.pdf
+- `name`, `role`, `location`, `email`, `website`, `contacts` — профиль и контакты;
+- `about` — общий короткий профиль;
+- `experience`: компания, роль, даты и `bullets.en` / `bullets.ru`. Английские пункты без изменений попадают в PDF и на сайт;
+- `presentations` — общие сведения о выступлениях; `presentationIds` связывает выступление с работой и кейсом. Формулировка автоматически попадает в PDF и HTML.
+- `education`, `skills`, `languages` — общие образование, инструменты и языки;
+- `researchTitle`, `publicationVenue`, `researchUrl` — общая публикация;
+- `projects`, `training`, `mathematicsAwards` — подробные материалы сайта. В краткий PDF они отдельно не выводятся; группа навыков `id: interests` также остаётся на сайте.
+
+Один английский PDF, без профилей и вариантов. Русские переводы сайта редактируются вручную рядом с английскими текстами.
+
+```text
+content.json
+  ├── scripts/page.html → site/index.html, site/ru/, site/en/
+  └── scripts/resume.tex.template → generated/ainur-karimov-cv.tex
+                                   → site/assets/ainur-karimov-cv.pdf
 ```
 
-Если отсутствует `ClearSans.sty`: `sudo apt install texlive-fonts-extra`.
-Inter распространяется по SIL Open Font License, см. `site/assets/Inter-LICENSE.txt`.
+Установка инструментов на Ubuntu/Debian:
+
+```bash
+sudo apt-get install texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended lmodern poppler-utils texlive-fonts-extra texlive-lang-cyrillic
+```
+
+Полная сборка и проверки:
+
+```bash
+python scripts/build.py
+python -m unittest discover -s tests -v
+```
+
+Сборка проверяет **ровно одну страницу A4**, отсутствие выходящего за границы текста и пропущенных символов. Используется прежний **Twenty Seconds CV**: исходный `twentysecondcv.cls`, круглая фотография, серая боковая панель и синие заголовки. Размер текста фиксирован: **10,5 pt** в основной колонке и **10 pt** в боковой. Сборка отдельно проверяет высоту боковой панели: абсолютное позиционирование не должно скрывать переполнение. При переполнении нужно сократить текст в JSON; автоматического уменьшения шрифта нет. Предыдущий PDF заменяется только после успешных проверок. Подробный лог и промежуточный PDF — в `build/resume/` (не входят в Git).
+
+Для изменения оформления: `scripts/resume.tex.template`. В `generated/` экспортируются `.tex`, неизменённая копия `twentysecondcv.cls` и `photo.jpeg`. Для ручной правки можно скопировать **все три файла** в отдельную папку и собрать `pdflatex ainur-karimov-cv.tex`. Следующая сборка перезаписывает `generated/ainur-karimov-cv.tex`, поэтому общие изменения делаются в JSON и шаблоне. Специальные символы LaTeX автоматически экранируются; текст в JSON пишется обычными символами.
+
+Быстро пересобрать только сайт, не меняя PDF:
+
+```bash
+python scripts/build.py --site-only
+```
+
+GitHub Actions настроен на ту же полную сборку с установкой TeX Live, тестами и проверкой одной страницы. Настройка применится после публикации изменений; текущая работа сохранена локально.
+
+Оригинальный класс шаблона и прежнее ручное резюме сохранены без изменений: `cv_karimov_ainur.tex` и `twentysecondcv.cls`. Для его сборки по-прежнему можно использовать `pdflatex`; если отсутствует `ClearSans.sty`: `sudo apt install texlive-fonts-extra`.
+
+Шрифт сайта Inter распространяется по SIL Open Font License, см. `site/assets/Inter-LICENSE.txt`.
+
+## Локальный дизайн
+
+Сайд-проекты убраны. Опыт представлен компактным списком с раскрывающимися подробностями. Основной блок — переключаемые рабочие кейсы; прямой адрес, например `/#case-citysoft`. Схемы иллюстрируют рабочий процесс и не являются результатами инференса. В CitySoft точка пересчитывается через гомографию между условным изображением и нормализованной плоскостью дороги; поддерживаются мышь, касание и клавиатурные ползунки. Без JavaScript все кейсы доступны последовательно. Кнопка печати раскрывает кейсы и детали опыта; скачиваемый LaTeX PDF собирается из тех же данных, что и сайт.
