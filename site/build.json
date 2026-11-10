@@ -1,0 +1,11 @@
+{
+  "built_at": "2026-11-10T06:44:15.763689+00:00",
+  "content_sha256": "e401af75818f492bfe1a0d4905671f682268da4169570f181c1f4b96bf3eac33",
+  "pdf_pages": 1,
+  "files": {
+    "index.html": "5e75613dfc4a9f1d94431d060eb5e0010cddcf0eeef023e7446889af37a75ba3",
+    "ru/index.html": "cf993d3f89ae5f34b80aac17a525c4150f0452b56461e6971d74b2acf2aed42d",
+    "en/index.html": "cabe25ade6a6acd88c142498edff6be61e7063cd6fadc2e9616b6c730a0ef53c",
+    "assets/ainur-karimov-cv.pdf": "8dae4c8ab5f4cd2156e7fd4d79ff7c4c5f2b4fb934a5cfcfc365ce5ea8bf13e8"
+  }
+}

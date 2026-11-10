@@ -5,8 +5,6 @@ on:
     branches: [main]
     paths:
       - content.json
-      - twentysecondcv.cls
-      - photo.jpeg
       - scripts/**
       - tests/**
       - site/**
@@ -34,11 +32,13 @@ jobs:
       - name: Install PDF build tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended lmodern poppler-utils texlive-fonts-extra texlive-lang-cyrillic
+          sudo apt-get install -y --no-install-recommends texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended lmodern poppler-utils
       - name: Verify shared content and one-page limit
         run: python -m unittest discover -s tests -v
       - name: Build website and one-page English PDF
         run: python scripts/build.py
+      - name: Check the published bundle matches the source
+        run: python scripts/check_bundle.py
       - name: Update published branch
         run: |
           git config user.name 'github-actions[bot]'

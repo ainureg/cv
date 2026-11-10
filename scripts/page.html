@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>$title</title><meta name="description" content="$about"><meta name="theme-color" content="#171e1b">
-  <meta property="og:type" content="profile"><meta property="og:title" content="$title"><meta property="og:description" content="$intro"><meta property="og:image" content="https://ainureg.github.io/cv/assets/portrait.jpeg">
+  <meta property="og:type" content="profile"><meta property="og:title" content="$title"><meta property="og:description" content="$intro"><meta property="og:image" content="$portraitUrl">
   <link rel="icon" href="${prefix}assets/favicon.svg" type="image/svg+xml"><link rel="canonical" href="$canonical">
-  <link rel="alternate" hreflang="x-default" href="https://ainureg.github.io/cv/"><link rel="alternate" hreflang="en" href="https://ainureg.github.io/cv/"><link rel="alternate" hreflang="ru" href="https://ainureg.github.io/cv/ru/">
+  <link rel="alternate" hreflang="x-default" href="$siteUrl"><link rel="alternate" hreflang="en" href="$siteUrl"><link rel="alternate" hreflang="ru" href="$russianUrl">
   <link rel="stylesheet" href="${prefix}styles.css"><script src="${prefix}app.js" defer></script>
 </head>
 <body id="top">
@@ -15,7 +15,7 @@
   </div>
   <main id="main">
   <div class="hero-shell">
-      <section class="hero wrap" aria-labelledby="hero-title"><div class="hero-main"><p class="eyebrow"><span class="dot"></span> $heroLabel</p><h1 id="hero-title">$name<span class="accent">.</span></h1><p class="intro">$intro</p><div class="hero-actions"><a class="button primary" href="#projects">$explore <span aria-hidden="true">↓</span></a><a class="button secondary" href="${prefix}assets/ainur-karimov-cv.pdf" download>$download <span aria-hidden="true">↓</span></a></div></div><aside class="hero-aside"><figure class="portrait"><img src="${prefix}assets/portrait.jpeg" alt="$portrait" width="240" height="229" fetchpriority="high"><figcaption><span class="portrait-corner" aria-hidden="true">+</span><span>$location</span></figcaption></figure><a class="research-badge" href="#research"><span class="badge-icon" aria-hidden="true">[r]</span><span><strong>$coauthor</strong><small>$publicationVenue</small></span><span aria-hidden="true">↗︎</span></a></aside></section>
+      <section class="hero wrap" aria-labelledby="hero-title"><div class="hero-main"><p class="eyebrow"><span class="dot"></span> $heroLabel</p><h1 id="hero-title">$name<span class="accent">.</span></h1><p class="intro">$intro</p><div class="hero-actions"><a class="button primary" href="#projects">$explore <span aria-hidden="true">↓</span></a><a class="button secondary" href="${prefix}assets/ainur-karimov-cv.pdf" download>$download <span aria-hidden="true">↓</span></a></div></div><aside class="hero-aside"><figure class="portrait"><img src="${prefix}$portraitPath" alt="$portrait" width="240" height="229" fetchpriority="high"><figcaption><span class="portrait-corner" aria-hidden="true">+</span><span>$location</span></figcaption></figure><a class="research-badge" href="#research"><span class="badge-icon" aria-hidden="true">[r]</span><span><strong>$coauthor</strong><small>$publicationVenue</small></span><span aria-hidden="true">↗︎</span></a></aside></section>
       <div class="hero-bottom wrap"><p>$about</p><div class="hero-links"><a href="$githubUrl" target="_blank" rel="noopener noreferrer">GitHub ↗︎</a><a href="$linkedinUrl" target="_blank" rel="noopener noreferrer">LinkedIn ↗︎</a><a href="$telegramUrl" target="_blank" rel="noopener noreferrer">Telegram ↗︎</a></div></div>
   </div>
   <div class="body-content wrap">
@@ -26,7 +26,7 @@
     <section class="personal academic" id="academic" aria-label="$academicBackground"><div><h3>$training</h3><ul>$trainingItems</ul></div><div><h3>$mathematicsAwards</h3><ul>$mathematicsAwardItems</ul></div></section>
     <section class="personal"><div><h3>$languages</h3><p>$languageList</p></div><div><h3>$elsewhere</h3><p>$interests</p></div></section>
     <section class="contact" id="contact"><p class="eyebrow">LET’S TALK</p><h2>$contactTitle</h2><div class="contact-row"><a class="contact-email" href="mailto:$email">$email ↗︎</a><button class="copy-email" type="button" data-copy-email data-email="$email" data-success="$copied" data-failure="$copyFailed">$copyEmail</button></div><p>$contactText</p><div class="contact-socials"><a href="$telegramUrl" target="_blank" rel="noopener noreferrer">Telegram ↗︎</a><a href="$linkedinUrl" target="_blank" rel="noopener noreferrer">LinkedIn ↗︎</a><button type="button" data-print>$printResume ↗︎</button></div><p class="copy-status" role="status" aria-live="polite"></p></section>
-    <footer class="footer"><span>© $name</span><a href="https://github.com/ainureg/cv" target="_blank" rel="noopener noreferrer">$source ↗︎</a><a href="#top">$top</a></footer>
+    <footer class="footer"><span>© $name</span><a href="$sourceUrl" target="_blank" rel="noopener noreferrer">$source ↗︎</a><a href="#top">$top</a></footer>
   </div>
   </main>
 </body></html>

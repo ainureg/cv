@@ -280,6 +280,6 @@ TSWLatexianTemp*
 __pycache__/
 *.pyc
 
-# Exported copies; originals remain at the repository root
-/generated/twentysecondcv.cls
-/generated/photo.jpeg
+# Generated exports and staging directories; edit content.json instead
+/generated/
+/.cv-build-*/

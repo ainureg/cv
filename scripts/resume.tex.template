@@ -1,70 +1,45 @@
-% Generated from content.json. Uses the original twentysecondcv.cls, unchanged.
-% For manual editing, copy this file together with twentysecondcv.cls and photo.jpeg.
-\documentclass[a4paper]{twentysecondcv}
-\usepackage{fontawesome5}
+% Generated from content.json. Edit the JSON or this template.
+% Copy generated/ainur-karimov-cv.tex elsewhere for standalone manual editing.
+\documentclass[10pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[margin=15mm]{geometry}
 \usepackage{microtype}
 \usepackage{enumitem}
-\hypersetup{hidelinks,unicode,pdftitle={$name — $role},pdfauthor={$name},pdfsubject={Curriculum vitae},pdfdisplaydoctitle=true}
-\geometry{left=7.6cm,top=0.8cm,right=0.8cm,bottom=0.8cm}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage[hidelinks,unicode]{hyperref}
+\hypersetup{pdftitle={$name — $role},pdfauthor={$name},pdfsubject={Curriculum vitae},pdfdisplaydoctitle=true}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
 \setlength{\emergencystretch}{1em}
-\setlist[itemize]{leftmargin=11pt,topsep=3pt,itemsep=2pt,parsep=0pt,partopsep=0pt}
-\profilepic{photo.jpeg}
-\cvname{$name}
-\cvjobtitle{$role}
-\cvaddress{$location}
-\aboutme{}
-\newsavebox{\profilebox}
-% Keep the original class's photo, palette, section rules and two-column layout.
-% Measure the sidebar: absolute positioning otherwise hides vertical overflow.
-\renewcommand{\makeprofile}{%
-  \begin{lrbox}{\profilebox}%
-  \begin{minipage}[t]{6cm}
-    \fontsize{10}{12}\selectfont\raggedright
-    \begin{center}
-      \begin{tikzpicture}[x=\imagescale,y=-\imagescale]
-        \clip (600/2,567/2) circle (567/2);
-        \node[anchor=north west,inner sep=0pt,outer sep=0pt] at (0,0) {\includegraphics[width=\imagewidth]{\profilepic}};
-      \end{tikzpicture}
-    \end{center}
-    {\Huge\color{mainblue}\cvname\par}
-    \vspace{3pt}
-    {\large\color{black!80}\cvjobtitle\par}
-    \vspace{8pt}
-    \cvaddress\par\vspace{5pt}
-    $sidebarContacts\par
-    \profilesection{Skills}\par\vspace{4pt}
-    $skills
-    \profilesection{Languages}\par\vspace{4pt}
-    $languages\par
-    \profilesection{Education}\par\vspace{4pt}
-    $education
-  \end{minipage}%
-  \end{lrbox}%
-  \ifdim\dimexpr\ht\profilebox+\dp\profilebox\relax>\dimexpr\paperheight-1cm\relax
-    \typeout{RESUME-SIDEBAR-OVERFLOW}%
-    \PackageError{resume}{Sidebar exceeds one page}{Shorten content.json; the font size is fixed.}%
-  \fi
-  \begin{tikzpicture}[remember picture,overlay]
-    \fill[sidecolor] (current page.north west) rectangle ([xshift=7cm]current page.south west);
-  \end{tikzpicture}%
-  \begin{textblock}{6}(0.5,0.3)\usebox{\profilebox}\end{textblock}%
-}
+\definecolor{accent}{HTML}{314B3A}
+\titleformat{\section}{\fontsize{12}{14}\selectfont\bfseries\color{accent}}{}{0pt}{}[\vspace{-2pt}\titlerule]
+\titlespacing*{\section}{0pt}{10pt}{6pt}
+\setlist[itemize]{leftmargin=12pt,label=\textbullet,topsep=3pt,itemsep=1pt,parsep=0pt,partopsep=0pt}
+\newcommand{\job}[3]{\noindent\textbf{#1}\hfill\mbox{#3}\\#2\par}
+\newcommand{\educationentry}[3]{\textbf{#1}\hfill\mbox{#3}\\#2\par\vspace{4pt}}
 \begin{document}
-\selectlanguage{english}
-\fontencoding{T1}\selectfont
 \fontsize{10.5}{12.6}\selectfont
 \raggedright
-\makeprofile
-\section{Profile}\par\vspace{5pt}
-$about\par\vspace{7pt}
-\section{Experience}\par\vspace{6pt}
-\begin{twenty}
-$experience
-\end{twenty}
-\par\vspace{5pt}
-\section{Publication}\par\vspace{6pt}
-\textbf{Co-author.} $publicationTitle\par
+{\fontsize{26}{29}\selectfont\bfseries $name}\par
+\vspace{3pt}
+\textbf{$role}\hfill $location\par
 \vspace{4pt}
-$publicationVenue\par
-$publicationLink
+$contacts\par
+\vspace{7pt}
+$about\par
+\section{Experience}
+$experience
+\section{Publication}
+\textbf{Co-author.} $publicationTitle\par
+$publicationVenue\enspace $publicationLink\par
+\section{Education}
+$education
+\section{Skills and languages}
+$skills
+\textbf{Languages:} $languages
 \end{document}

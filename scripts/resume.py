@@ -1,5 +1,5 @@
-"""Render a twentysecondcv export and publish its PDF only after layout checks."""
-from content import experience_bullets
+"""Render a simple one-column resume and publish its PDF only after layout checks."""
+from content import experience_bullets, experience_entries
 from pathlib import Path
 from string import Template
 from urllib.parse import urlsplit
@@ -37,22 +37,22 @@ def link(url, label):
 
 def render_resume(data):
     jobs = []
-    for job in data['experience']:
+    for job in experience_entries(data):
         bullets = experience_bullets(data, job, 'en')
-        start, end = english(job['period']).split(' — ', 1)
         jobs.append(
-            r'\twentyitem{' + tex(start + ' —') + '}{' + tex(end) + '}{' + tex(job['role'])
-            + '}{' + link(job['url'], job['company']) + '}{}{\n'
+            r'\job{' + link(job['url'], job['company']) + '}{' + tex(job['role'])
+            + '}{' + tex(job['period']) + '}\n'
             + '\\begin{itemize}\n'
             + '\n'.join(r'\item ' + tex(bullet) for bullet in bullets)
-            + '\n\\end{itemize}}\\\\[5pt]'
+            + '\n\\end{itemize}\\vspace{4pt}'
         )
     contacts = [link('mailto:' + data['email'], data['email'])]
     contacts.append(link(data['website'], urlsplit(data['website']).netloc + urlsplit(data['website']).path.rstrip('/')))
     contacts.extend(link(contact['url'], contact['label']) for contact in data['contacts'])
     education = '\n'.join(
-        r'\textbf{' + tex(item['school']) + r'}\\ ' + tex(item['text'])
-        + (r'\\ ' + tex(item['year']) if re.fullmatch(r'\d{4}', item['year']) else '') + r'\par\vspace{5pt}' for item in data['education']
+        r'\educationentry{' + tex(item['school']) + '}{' + tex(item['text'])
+        + '}{' + (tex(item['year']) if re.fullmatch(r'\d{4}', item['year']) else '') + '}'
+        for item in data['education']
     )
     # The "Exploring next" group is not a claim of existing technical proficiency.
     skills = '\n'.join(
@@ -66,7 +66,6 @@ def render_resume(data):
         experience='\n'.join(jobs), education=education, skills=skills,
         publicationTitle=tex(data['researchTitle']),
         publicationVenue=tex(data['publicationVenue']),
-        sidebarContacts=r'\\[4pt]'.join(contacts),
         publicationLink=link(data['researchUrl'], 'DOI: ' + data['researchUrl'].removeprefix('https://doi.org/')),
     )
     return Template((ROOT / 'scripts/resume.tex.template').read_text()).substitute(values)
@@ -96,9 +95,6 @@ def build_resume(data, root=ROOT):
     source = root / 'generated/ainur-karimov-cv.tex'
     source.parent.mkdir(parents=True, exist_ok=True)
     source.write_text(render_resume(data))
-    # Export the original class and portrait alongside the generated .tex.
-    shutil.copyfile(ROOT / 'twentysecondcv.cls', source.parent / 'twentysecondcv.cls')
-    shutil.copyfile(ROOT / 'photo.jpeg', source.parent / 'photo.jpeg')
     build = root / 'build/resume'
     build.mkdir(parents=True, exist_ok=True)
     command = ['pdflatex', '-no-shell-escape', '-interaction=nonstopmode', '-halt-on-error',
@@ -106,8 +102,6 @@ def build_resume(data, root=ROOT):
     for _ in range(2):
         result = subprocess.run(command, cwd=source.parent, text=True, capture_output=True)
         if result.returncode:
-            if 'RESUME-SIDEBAR-OVERFLOW' in result.stdout:
-                raise ValueError('Resume sidebar exceeds one A4 page. Shorten content.json; previous website PDF was kept.')
             raise RuntimeError('LaTeX compilation failed; previous website PDF was kept.\n' + result.stdout[-4000:])
     pdf = build / 'ainur-karimov-cv.pdf'
     validate_pdf(pdf, (build / 'ainur-karimov-cv.log').read_text())
@@ -123,5 +117,5 @@ def build_resume(data, root=ROOT):
     finally:
         temporary.unlink(missing_ok=True)
     print(f'Built {source.relative_to(root)}')
-    print(f'Built {destination.relative_to(root)} — 1 page, A4, twentysecondcv')
+    print(f'Built {destination.relative_to(root)} — 1 page, A4, simple layout')
     return destination

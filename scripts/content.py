@@ -11,3 +11,9 @@ def experience_bullets(data, job, language):
         item['statement'][language]
         for item in presentations(data, job.get('presentationIds', []))
     ]
+
+
+def experience_entries(data):
+    for job in data['experience']:
+        company = data['companies'][job['companyId']]
+        yield {**job, 'company': company['name'], 'url': company['url'], 'logo': company.get('logo')}
