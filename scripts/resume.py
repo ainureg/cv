@@ -35,6 +35,13 @@ def link(url, label):
     return r'\href{' + escaped + '}{' + tex(label) + '}'
 
 
+def academic_text(data, key):
+    return '; '.join(
+        r'\textbf{' + tex(item['title']) + '}: ' + tex(item['text']).rstrip('.')
+        for item in data.get(key, [])
+    ) + '.'
+
+
 def render_resume(data):
     jobs = []
     for job in experience_entries(data):
@@ -44,7 +51,7 @@ def render_resume(data):
             + '}{' + tex(job['period']) + '}\n'
             + '\\begin{itemize}\n'
             + '\n'.join(r'\item ' + tex(bullet) for bullet in bullets)
-            + '\n\\end{itemize}\\vspace{4pt}'
+            + '\n\\end{itemize}\\vspace{1pt}'
         )
     contacts = [link('mailto:' + data['email'], data['email'])]
     contacts.append(link(data['website'], urlsplit(data['website']).netloc + urlsplit(data['website']).path.rstrip('/')))
@@ -57,13 +64,15 @@ def render_resume(data):
     # The "Exploring next" group is not a claim of existing technical proficiency.
     skills = '\n'.join(
         r'\textbf{' + tex(group['label']) + ':} '
-        + ', '.join(tex(item) for item in group['items']) + r'\par\vspace{4pt}'
+        + ', '.join(tex(item) for item in group['items']) + r'\par\vspace{1pt}'
         for group in data['skills'] if group.get('id') != 'interests'
     )
     values = {key: tex(data[key]) for key in ['name', 'role', 'location', 'about', 'languages']}
     values.update(
         contacts=r'\enspace\textbar\enspace '.join(contacts),
         experience='\n'.join(jobs), education=education, skills=skills,
+        training=academic_text(data, 'training'), awards=academic_text(data, 'mathematicsAwards'),
+        certificatesLink=link(data['certificatesUrl'], 'Certificates and diplomas · Yandex Disk'),
         publicationTitle=tex(data['researchTitle']),
         publicationVenue=tex(data['publicationVenue']),
         publicationLink=link(data['researchUrl'], 'DOI: ' + data['researchUrl'].removeprefix('https://doi.org/')),
@@ -91,12 +100,14 @@ def build_resume(data, root=ROOT):
     root = Path(root)
     for command in ['pdflatex', 'pdfinfo']:
         if not shutil.which(command):
-            raise RuntimeError(f'{command} is required for PDF generation. See README.md, or use --site-only.')
+            raise RuntimeError(f'{command} is required for PDF generation. See README.md for installation instructions.')
     source = root / 'generated/ainur-karimov-cv.tex'
     source.parent.mkdir(parents=True, exist_ok=True)
     source.write_text(render_resume(data))
     build = root / 'build/resume'
     build.mkdir(parents=True, exist_ok=True)
+    for extension in ('aux', 'out', 'toc'):
+        (build / f'ainur-karimov-cv.{extension}').unlink(missing_ok=True)
     command = ['pdflatex', '-no-shell-escape', '-interaction=nonstopmode', '-halt-on-error',
                '-file-line-error', f'-output-directory={build}', str(source)]
     for _ in range(2):

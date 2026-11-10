@@ -45,6 +45,9 @@ class ResumeTests(unittest.TestCase):
         # build_resume itself verifies exactly one A4 page and no missing/overflowing glyphs.
         self.assertEqual(text.count('\f'), 1)
         self.assertIn(event_statement, ' '.join(text.split()))
+        normalized = ' '.join(text.split())
+        for value in ['Intel HPC School', 'Summer Bioinformatics', 'professional development certificate', 'International Space Olympics', 'Second-degree diploma', 'top student of my department', 'Five-time first-place winner', 'Fourth place', 'Yandex Disk']:
+            self.assertIn(value, normalized)
 
     def test_overflow_is_rejected_and_previous_download_is_preserved(self):
         destination = self.root / 'site/assets/ainur-karimov-cv.pdf'
